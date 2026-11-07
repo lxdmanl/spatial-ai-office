@@ -1,0 +1,18 @@
+{
+  "id": "apartment",
+  "name": "室內範例 · 開放式公寓",
+  "splat": "/assets/apartment/meta.json",
+  "robot": "/assets/RobotExpressive.glb",
+  "attribution": "Apartment — ethan3111 / CC BY 4.0",
+  "camera": { "position": [-7.63, 3.57, -10.07], "target": [-3.1, 2.2, -2.9], "fov": 72 },
+  "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1 },
+  "anchors": { "planner": [-4, 0.035, -2.7], "reviewer": [-7.18, 0.04, -3.95], "results": [-5.35, 0.035, -2.6] },
+  "walkArea": { "x": [-7.55, -3.95], "z": [-4.08, -1.55], "floorY": 0.04 },
+  "routes": {
+    "draft": [[-4, 0.035, -2.7], [-4, 0.035, -2], [-4.55, 0.035, -1.75]],
+    "review": [[-7.18, 0.04, -3.95], [-7.2, 0.04, -2.8], [-6.7, 0.04, -2.2]],
+    "revision": [[-4.55, 0.035, -1.75], [-4.7, 0.035, -2.2]],
+    "completed": [[-4.7, 0.035, -2.2], [-5.35, 0.035, -2.6]]
+  },
+  "robotScale": 0.42
+}

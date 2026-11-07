@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111719" />
+    <link rel="icon" href="/assets/office.svg" />
+    <title>實景 AI 工作室</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <svg class="mark" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><path d="M18 4 30 11v14l-12 7L6 25V11Zm0 14 12-7m-12 7L6 11m12 7v14" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18" r="3" fill="currentColor"/></svg>
+        <div><strong>實景 AI 工作室</strong><span>SPATIAL AI OFFICE</span></div>
+      </div>
+      <div class="top-status"><span id="quota" class="pill">OpenAI API</span><span id="connection" class="pill" role="status">連線中</span></div>
+    </header>
+    <main>
+      <div class="intro">
+        <div><p class="eyebrow">WORKSPACE / 01</p><h1>工作室控制台</h1></div>
+        <p>派出一份文件，查看企劃與審查的每一次交接。</p>
+      </div>
+      <div class="workspace">
+        <section class="room-panel" aria-labelledby="room-heading">
+          <div class="panel-head"><div><p class="eyebrow">01 / SCENE</p><h2 id="room-heading">3D 房間</h2></div><span class="pill" id="scene-name">載入中</span></div>
+          <div class="stage-shell">
+            <div id="viewer" aria-label="可旋轉的 3D 場景"></div>
+            <p id="room-status" class="room-status" role="status">正在載入本機場景…</p>
+            <div id="measurement" class="measurement" role="status" hidden></div>
+          </div>
+          <div class="room-tools">
+            <div class="role-tools" aria-label="選取角色">
+              <button id="planner" class="role" type="button"><span class="dot planner" aria-hidden="true"></span>企劃 <span class="role-state" id="planner-state">待命</span></button>
+              <button id="reviewer" class="role" type="button"><span class="dot reviewer" aria-hidden="true"></span>審查 <span class="role-state" id="reviewer-state">待命</span></button>
+            </div>
+            <div class="scene-tools">
+              <button id="first-person" type="button" aria-pressed="false" hidden disabled>第一人稱</button>
+              <button id="reset-camera" type="button" disabled>重設鏡頭</button>
+              <button id="walk-preview" type="button" disabled>試走</button>
+              <label class="performance"><input id="performance" type="checkbox" disabled /> 效能模式</label>
+            </div>
+          </div>
+          <div class="room-foot"><span id="attribution"></span>
+            <details class="metrics">
+              <summary>效能量測</summary>
+              <p>全螢幕後，請沿同一方向小幅轉動鏡頭 30 秒。完成後按 Esc。</p>
+              <div class="actions">
+                <button id="bench-splat" type="button" disabled>純 Splat</button>
+                <button id="bench-robots" type="button" disabled>雙角色</button>
+              </div>
+              <p id="last-measurement"></p>
+            </details>
+          </div>
+          <aside id="role-details" class="role-details" aria-label="角色詳情" hidden></aside>
+        </section>
+        <section class="panel dispatch" aria-labelledby="dispatch-heading">
+          <div class="panel-head"><div><p class="eyebrow">02 / DISPATCH</p><h2 id="dispatch-heading">任務派工</h2></div><button id="use-example" type="button">填入範例</button></div>
+          <form id="task-form">
+            <label for="title">任務名稱</label><input id="title" name="title" maxlength="120" required placeholder="例如：週末社群活動" />
+            <label for="goal">任務目標</label><input id="goal" name="goal" maxlength="1000" required placeholder="例如：整理為可執行的活動企劃" />
+            <div class="label-row"><label for="source">原始文件</label><span id="source-count">0 / 10,000</span></div>
+            <textarea id="source" name="source" required rows="5" aria-describedby="source-count form-hint" placeholder="貼上要交給工作室的文件…"></textarea>
+            <div class="file-row"><label for="file" class="file-label">匯入 .txt / .md</label><input id="file" type="file" accept=".txt,.md" /></div>
+            <p id="form-hint" class="quiet">派工會將本次任務文字及必要成果傳送給 OpenAI，API 用量依帳戶計費。</p>
+            <p id="form-error" class="error" role="alert" hidden></p>
+            <button id="submit" type="submit" class="primary">開始派工 <span aria-hidden="true">↗</span></button>
+          </form>
+          <section class="progress-section" aria-labelledby="progress-heading">
+            <div class="label-row"><h3 id="progress-heading">任務進度</h3><span id="task-status" class="pill">尚未派工</span></div>
+            <ol id="stages" class="stages"></ol>
+            <p id="task-error" class="error" role="status" hidden></p>
+            <div class="actions">
+              <button id="cancel" type="button" hidden>取消任務</button>
+              <button id="retry" type="button" hidden>接續任務</button>
+              <button id="replay" type="button" hidden>歷史回放</button>
+              <button id="stop-replay" type="button" hidden>結束回放</button>
+            </div>
+          </section>
+        </section>
+      </div>
+      <div class="workspace below">
+        <section class="panel results" aria-labelledby="results-heading">
+          <div class="panel-head"><div><p class="eyebrow">03 / OUTPUT</p><h2 id="results-heading">成果區</h2></div><button id="compare" type="button" aria-pressed="false" disabled>對照初稿與修訂</button></div>
+          <div id="output-tabs" class="tabs" aria-label="選擇成果"></div>
+          <div id="artifacts" class="artifacts"><p class="empty">成果通過驗證後會顯示在這裡。</p></div>
+          <section id="citation" class="citation" aria-labelledby="citation-heading" hidden>
+            <h3 id="citation-heading" tabindex="-1">引用原文</h3><pre id="citation-text"></pre>
+          </section>
+        </section>
+        <section class="panel history" aria-labelledby="history-heading">
+          <div class="panel-head"><div><p class="eyebrow">04 / HISTORY</p><h2 id="history-heading">本機任務紀錄</h2></div></div>
+          <div id="history"><p class="empty">任務建立後會保存在這台電腦。</p></div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

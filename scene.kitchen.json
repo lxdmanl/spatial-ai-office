@@ -1,0 +1,17 @@
+{
+  "id": "scaniverse-kitchen",
+  "name": "Scaniverse 範例 · 廚房爐台",
+  "splat": "/assets/scaniverse-kitchen/scene.compressed.ply",
+  "robot": "/assets/RobotExpressive.glb",
+  "attribution": "Stove — parkerlreed / CC BY 4.0",
+  "camera": { "position": [0.23, 1.1, 2.37], "target": [0.09, 0.64, 0.22], "fov": 52 },
+  "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1 },
+  "anchors": { "planner": [-0.25, 0.101, 0.56], "reviewer": [0.39, 0.114, 0.55], "results": [0.1, 0.108, 0.63] },
+  "routes": {
+    "draft": [[-0.25, 0.101, 0.56], [-0.08, 0.105, 0.59]],
+    "review": [[0.39, 0.114, 0.55], [0.24, 0.111, 0.6]],
+    "revision": [[-0.08, 0.105, 0.59], [-0.015, 0.106, 0.63]],
+    "completed": [[-0.015, 0.106, 0.63], [0.1, 0.108, 0.63]]
+  },
+  "robotScale": 0.096
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ready",
+  "name": "授權範例 · ready",
+  "splat": "/assets/ready/ready-lite.sog",
+  "robot": "/assets/RobotExpressive.glb",
+  "attribution": "ready — dibond / CC BY 4.0 · 裁切及簡化版",
+  "camera": { "position": [7.13, 2.93, -5.05], "target": [0.4, 1.55, 4.2], "fov": 56 },
+  "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1 },
+  "anchors": { "planner": [1.82, -0.2, 1.95], "reviewer": [1.82, -0.21, 4.12], "results": [1.45, -0.2, 3.05] },
+  "routes": {
+    "draft": [[1.56, -0.2, 2.42], [1.82, -0.2, 1.95]],
+    "review": [[1.55, -0.21, 3.6], [1.82, -0.21, 4.12]],
+    "revision": [[1.82, -0.2, 1.95], [1.58, -0.2, 2.46]],
+    "completed": [[1.58, -0.2, 2.46], [1.45, -0.2, 3.05]]
+  },
+  "robotScale": 0.36
+}

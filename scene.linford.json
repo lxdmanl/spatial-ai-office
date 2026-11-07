@@ -1,0 +1,17 @@
+{
+  "id": "linford",
+  "name": "Scaniverse 範例 · 林間長椅",
+  "splat": "/assets/linford/meta.json",
+  "robot": "/assets/RobotExpressive.glb",
+  "attribution": "Linford wood bench — natural_ai / CC BY 4.0",
+  "camera": { "position": [-0.4, 1.45, 3.35], "target": [0, 0.4, 0.16], "fov": 57 },
+  "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0], "scale": 1 },
+  "anchors": { "planner": [-0.68, 0.075, 0.88], "reviewer": [0.65, 0.078, 0.83], "results": [0, 0.05, 0.92] },
+  "routes": {
+    "draft": [[-0.68, 0.075, 0.88], [-0.38, 0.055, 0.82]],
+    "review": [[0.65, 0.078, 0.83], [0.35, 0.056, 0.84]],
+    "revision": [[-0.38, 0.055, 0.82], [-0.22, 0.05, 0.95]],
+    "completed": [[-0.22, 0.05, 0.95], [0, 0.05, 0.92]]
+  },
+  "robotScale": 0.16
+}
